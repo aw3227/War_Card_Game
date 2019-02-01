@@ -1,5 +1,4 @@
-﻿
-public class Card
+﻿public class Card
 {
     public string Suit { get; set; }
     public int Number { get; set; }
