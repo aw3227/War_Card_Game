@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 
-class Deck
+public class Deck
 {
     private Stack<Card> deck = new Stack<Card>();
 

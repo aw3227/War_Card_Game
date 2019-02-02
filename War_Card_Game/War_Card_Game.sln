@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26430.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "War_Card_Game", "War_Card_Game\War_Card_Game.csproj", "{CEF1E2B4-C6BE-4B01-93DC-A5F852390DEC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "War_Card_GameTests", "War_Card_GameTests\War_Card_GameTests.csproj", "{482642E7-CF7F-451E-BF1C-7D52E3226B76}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{CEF1E2B4-C6BE-4B01-93DC-A5F852390DEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CEF1E2B4-C6BE-4B01-93DC-A5F852390DEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CEF1E2B4-C6BE-4B01-93DC-A5F852390DEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{482642E7-CF7F-451E-BF1C-7D52E3226B76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{482642E7-CF7F-451E-BF1C-7D52E3226B76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{482642E7-CF7F-451E-BF1C-7D52E3226B76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{482642E7-CF7F-451E-BF1C-7D52E3226B76}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

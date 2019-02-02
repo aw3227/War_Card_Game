@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 public class War
 {
-    private General General1;
-    private General General2;
+    public General General1;
+    public General General2;
     public int Counter;
     public bool truce = false;
 
