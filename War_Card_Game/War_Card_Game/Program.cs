@@ -9,30 +9,30 @@ class Program
     static void Main(string[] args)
     {
 
-        bool StillPlaying = true;
+        bool stillPlaying = true;
 
        
         ///first while loop which starts a new war if the Generals choose to do so after the end of a war
-        while (StillPlaying)
+        while (stillPlaying)
         {
 
-            bool WarOver = false;
+            bool warOver = false;
 
             Console.WriteLine("Enter the name of the first army General: ");
-            string GeneralName1 = Console.ReadLine();
+            string generalName1 = Console.ReadLine();
             Console.WriteLine("Enter the name of the second army General: ");
-            string GeneralName2 = Console.ReadLine();
+            string generalName2 = Console.ReadLine();
 
-            War war = new War(GeneralName1, GeneralName2);
+            War war = new War(generalName1, generalName2);
             
 
             ///second while loop that continues the game until one General wins or a truce is agreed upon
-            while (!WarOver)
+            while (!warOver)
             {
 
-                if (war.Counter > 500)
+                if (war.counter > 500)
                 {
-                    Console.WriteLine("Generals, you have been waging war for " + war.Counter.ToString() + " battles. You may want to declare a truce. Type \"yes\" to continue the war: ");
+                    Console.WriteLine("Generals, you have been waging war for " + war.counter.ToString() + " battles. You may want to declare a truce. Type \"yes\" to continue the war: ");
                 }
                 else
                 {
@@ -45,29 +45,29 @@ class Program
 
                 if (play == "yes" || play == "\"yes\"")
                 {
-                    bool Proceed = false;
-                    int BattlesFought = 0;
+                    bool proceed = false;
+                    int battlesFought = 0;
                     Console.WriteLine("How many battles are you willing to fight? ");
 
 
                     ///third while loop which requires input for battles fought to be a number between 1-10,000
-                    while (!Proceed)
+                    while (!proceed)
                     {
                         string inputString = Console.ReadLine();
-                        bool Parsed = Int32.TryParse(inputString, out BattlesFought);
+                        bool parsed = Int32.TryParse(inputString, out battlesFought);
 
-                        if (!Parsed)
+                        if (!parsed)
                             Console.WriteLine("'{0}' is not a valid number. Please enter a new number", inputString);
-                        else if (Parsed)
+                        else if (parsed)
                         {
-                            BattlesFought = Int32.Parse(inputString);
-                            if (BattlesFought > 10000 || BattlesFought < 1)
+                            battlesFought = Int32.Parse(inputString);
+                            if (battlesFought > 10000 || battlesFought < 1)
                             {
                                 Console.WriteLine("Your Leiutenant suggests waging between 1 and 10,000 battles. '{0}' battles would be ridiculous", inputString);
                             }
                             else
                             {
-                                Proceed = true;
+                                proceed = true;
                             }
                         }
 
@@ -76,12 +76,12 @@ class Program
                     Console.WriteLine();
 
 
-                    for (int turn = 0; turn < BattlesFought; turn = turn + 1)
+                    for (int turn = 0; turn < battlesFought; turn = turn + 1)
 
                     {
                         war.Battle();
-                        WarOver = war.EndWar();
-                        if (WarOver == true)
+                        warOver = war.EndWar();
+                        if (warOver == true)
                         {
                             break;
                         }
@@ -92,8 +92,8 @@ class Program
                 else
                 {
                     war.truce = true;
-                    WarOver = war.EndWar();
-                    if (WarOver == true)
+                    warOver = war.EndWar();
+                    if (warOver == true)
                     {
                         break;
                     }
@@ -104,16 +104,16 @@ class Program
 
             Console.WriteLine("The War has ended. Should a new war begin?");
             Console.WriteLine("Type \"yes\" to play again or type anything else to exit");
-            string PlayAgain = Console.ReadLine();
+            string playAgain = Console.ReadLine();
 
 
-            if (PlayAgain == "yes" || PlayAgain == "\"yes\"")
+            if (playAgain == "yes" || playAgain == "\"yes\"")
             {
                 continue;
             }
             else
             {
-                StillPlaying = false;
+                stillPlaying = false;
             }
 
 

@@ -2,8 +2,8 @@
 
 public class General
 {
-    public string Name { get; set; }
-    public Queue<Card> Cards = new Queue<Card>();
+    public string name { get; set; }
+    public Queue<Card> cards = new Queue<Card>();
 
 
     /// <summary>
@@ -12,7 +12,7 @@ public class General
     /// <param name="name"></param>
     public General(string name)
     {
-        this.Name = name;
+        this.name = name;
     }
 }
 

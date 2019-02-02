@@ -5,50 +5,50 @@ namespace Tests
     [TestClass()]
     public class WarTests
     {
-        string General1String = "name1";
-        string General2String = "name2";
+        string general1String = "name1";
+        string general2String = "name2";
 
-        War TestWar = new War("name1", "name2");
+        War testWar = new War("name1", "name2");
 
         [TestMethod()]
         public void WarInitializeTest()
         {
             
-            Assert.AreEqual(TestWar.General1.Name, General1String);
-            Assert.AreEqual(TestWar.General2.Name, General2String);
+            Assert.AreEqual(testWar.general1.name, general1String);
+            Assert.AreEqual(testWar.general2.name, general2String);
         }
 
         [TestMethod()]
         public void EndWarTruceTest()
         {
-            TestWar.truce = true;
-            Assert.IsTrue(TestWar.EndWar());
+            testWar.truce = true;
+            Assert.IsTrue(testWar.EndWar());
         }
 
         [TestMethod()]
         public void EndWarGeneralOneWinsTest()
         {
-            TestWar.General2.Cards.Clear();
-            Assert.IsTrue(TestWar.EndWar());
+            testWar.general2.cards.Clear();
+            Assert.IsTrue(testWar.EndWar());
         }
 
         [TestMethod()]
         public void EndWarGeneralTwoWinsTest()
         {
-            TestWar.General1.Cards.Clear();
-            Assert.IsTrue(TestWar.EndWar());
+            testWar.general1.cards.Clear();
+            Assert.IsTrue(testWar.EndWar());
         }
 
         [TestMethod()]
         public void EndWarFalseTest()
         {
-            Assert.IsFalse(TestWar.EndWar());
+            Assert.IsFalse(testWar.EndWar());
         }
 
         [TestMethod()]
         public void BattleTest()
         {
-            Assert.AreEqual(TestWar.General1.Cards.Count + TestWar.General2.Cards.Count, 52);
+            Assert.AreEqual(testWar.general1.cards.Count + testWar.general2.cards.Count, 52);
         }
     }
 }

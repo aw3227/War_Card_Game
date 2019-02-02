@@ -4,19 +4,19 @@ using System.Collections.Generic;
 
 public class War
 {
-    public General General1;
-    public General General2;
-    public int Counter;
+    public General general1;
+    public General general2;
+    public int counter;
     public bool truce = false;
 
 
     /// <summary>
     /// Constructor taking two strings and setting them to each General's name before creating a deck, shuffling it and dealing 26 cards/troops to each General
     /// </summary>
-    public War(string GeneralName1, string GeneralName2)
+    public War(string generalName1, string generalName2)
     {
-        General1 = new General(GeneralName1);
-        General2 = new General(GeneralName2);
+        general1 = new General(generalName1);
+        general2 = new General(generalName2);
 
         Deck deck = new Deck();
 
@@ -24,16 +24,16 @@ public class War
 
         deck.Shuffle();
 
-        while (General1.Cards.Count < 26)
+        while (general1.cards.Count < 26)
         {
-            General1.Cards.Enqueue(deck.Deal());
-            General2.Cards.Enqueue(deck.Deal());
+            general1.cards.Enqueue(deck.Deal());
+            general2.cards.Enqueue(deck.Deal());
         }
 
 
 
-        Console.WriteLine("General " + General1.Name + " has an army of " + General1.Cards.Count + " troops");
-        Console.WriteLine("General " + General2.Name + " has an army of " + General2.Cards.Count + " troops");
+        Console.WriteLine("General " + general1.name + " has an army of " + general1.cards.Count + " troops");
+        Console.WriteLine("General " + general2.name + " has an army of " + general2.cards.Count + " troops");
 
 
     }
@@ -48,23 +48,23 @@ public class War
 
         if (truce == true)
         {
-            Console.WriteLine("General " + General1.Name + " and General " + General2.Name + " have declared a truce after " + Counter.ToString() + " battles");
-            Console.WriteLine("General " + General1.Name + " troop count: " + General1.Cards.Count);
-            Console.WriteLine("General " + General2.Name + " troop count: " + General2.Cards.Count);
+            Console.WriteLine("General " + general1.name + " and General " + general2.name + " have declared a truce after " + counter.ToString() + " battles");
+            Console.WriteLine("General " + general1.name + " troop count: " + general1.cards.Count);
+            Console.WriteLine("General " + general2.name + " troop count: " + general2.cards.Count);
             return true;
         }
-        else if (General1.Cards.Count < 1)
+        else if (general1.cards.Count < 1)
         {
-            Console.WriteLine("General " + General1.Name + " has run out of troops!\n");
-            Console.WriteLine("General " + General2.Name + " has won the war!\n");
-            Console.WriteLine("Battles Completed: " + Counter.ToString());
+            Console.WriteLine("General " + general1.name + " has run out of troops!\n");
+            Console.WriteLine("General " + general2.name + " has won the war!\n");
+            Console.WriteLine("Battles Completed: " + counter.ToString());
             return true;
         }
-        else if (General2.Cards.Count < 1)
+        else if (general2.cards.Count < 1)
         {
-            Console.WriteLine("General " + General2.Name + " has run out of troops!\n");
-            Console.WriteLine("General " + General1.Name + " has won the war!\n");
-            Console.WriteLine("Battles Completed: " + Counter.ToString());
+            Console.WriteLine("General " + general2.name + " has run out of troops!\n");
+            Console.WriteLine("General " + general1.name + " has won the war!\n");
+            Console.WriteLine("Battles Completed: " + counter.ToString());
             return true;
         }
         return false;
@@ -80,75 +80,75 @@ public class War
     /// </summary>
     public void Battle()
     {
-        Queue<Card> General1pool = new Queue<Card>();
-        Queue<Card> General2pool = new Queue<Card>();
+        Queue<Card> general1Pool = new Queue<Card>();
+        Queue<Card> general2Pool = new Queue<Card>();
 
-        var General1card = General1.Cards.Dequeue();
-        var General2card = General2.Cards.Dequeue();
+        var general1Card = general1.cards.Dequeue();
+        var general2Card = general2.cards.Dequeue();
 
-        General1pool.Enqueue(General1card);
-        General2pool.Enqueue(General2card);
+        general1Pool.Enqueue(general1Card);
+        general2Pool.Enqueue(general2Card);
 
-        Console.WriteLine("General " + General1.Name + " sends in " + General1card.CardName + " and General " + General2.Name + " sends in " + General2card.CardName + " to the battle!");
+        Console.WriteLine("General " + general1.name + " sends in " + general1Card.cardName + " and General " + general2.name + " sends in " + general2Card.cardName + " to the battle!");
 
-        while (General1card.Number == General2card.Number)
+        while (general1Card.number == general2Card.number)
         {
             Console.WriteLine("Your troops are evenly matched! The Battle has escalated to War!");
-            if (General1.Cards.Count < 2)
+            if (general1.cards.Count < 2)
             {
-                General1.Cards.Clear();
-                Counter++;
+                general1.cards.Clear();
+                counter++;
                 return;
             }
-            if (General1.Cards.Count < 2)
+            if (general1.cards.Count < 2)
             {
-                General1.Cards.Clear();
-                Counter++;
+                general1.cards.Clear();
+                counter++;
                 return;
             }
 
-            General1pool.Enqueue(General1.Cards.Dequeue());
-            General2pool.Enqueue(General2.Cards.Dequeue());
+            general1Pool.Enqueue(general1.cards.Dequeue());
+            general2Pool.Enqueue(general2.cards.Dequeue());
 
-            General1card = General1.Cards.Dequeue();
-            General2card = General2.Cards.Dequeue();
+            general1Card = general1.cards.Dequeue();
+            general2Card = general2.cards.Dequeue();
 
-            General1pool.Enqueue(General1card);
-            General2pool.Enqueue(General2card);
+            general1Pool.Enqueue(general1Card);
+            general2Pool.Enqueue(general2Card);
 
-            Console.WriteLine("General " + General1.Name + " sends in " + General1card.CardName + " and General " + General2.Name + " sends in " + General2card.CardName + " to the battle!");
+            Console.WriteLine("General " + general1.name + " sends in " + general1Card.cardName + " and General " + general2.name + " sends in " + general2Card.cardName + " to the battle!");
 
         }
 
-        if (General1card.Number < General2card.Number)
+        if (general1Card.number < general2Card.number)
         {
-            while (General1pool.Count > 0)
+            while (general1Pool.Count > 0)
 
             {
-                General2.Cards.Enqueue(General1pool.Dequeue());
-                General2.Cards.Enqueue(General2pool.Dequeue());
+                general2.cards.Enqueue(general1Pool.Dequeue());
+                general2.cards.Enqueue(general2Pool.Dequeue());
             }
 
-            Console.WriteLine("General " + General2.Name + " has won! All troops from the battle have joined their army!");
-            Console.WriteLine("General " + General1.Name + " troop count: " + General1.Cards.Count);
-            Console.WriteLine("General " + General2.Name + " troop count: " + General2.Cards.Count);
+            Console.WriteLine("General " + general2.name + " has won! All troops from the battle have joined their army!");
+            Console.WriteLine("General " + general1.name + " troop count: " + general1.cards.Count);
+            Console.WriteLine("General " + general2.name + " troop count: " + general2.cards.Count);
 
         }
         else
         {
-            while (General1pool.Count > 0)
+            while (general1Pool.Count > 0)
 
             {
-                General1.Cards.Enqueue(General1pool.Dequeue());
-                General1.Cards.Enqueue(General2pool.Dequeue());
+                general1.cards.Enqueue(general1Pool.Dequeue());
+                general1.cards.Enqueue(general2Pool.Dequeue());
             }
-            Console.WriteLine("General " + General1.Name + " has won! All troops from the battle have joined their army!");
-            Console.WriteLine("General " + General1.Name + " troop count: " + General1.Cards.Count);
-            Console.WriteLine("General " + General2.Name + " troop count: " + General2.Cards.Count);
+            Console.WriteLine("General " + general1.name + " has won! All troops from the battle have joined their army!");
+            Console.WriteLine("General " + general1.name + " troop count: " + general1.cards.Count);
+            Console.WriteLine("General " + general2.name + " troop count: " + general2.cards.Count);
         }
 
-        Counter++;
-        Console.WriteLine("Battle number " + Counter.ToString() + " is complete");
+        counter++;
+        Console.WriteLine("Battle Number " + counter.ToString() + " is complete");
         Console.WriteLine();
     }
 }

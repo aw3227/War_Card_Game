@@ -1,8 +1,8 @@
 ﻿public class Card
 {
-    public string Suit { get; set; }
-    public int Number { get; set; }
-    public string CardName { get; set; }
+    public string suit { get; set; }
+    public int number { get; set; }
+    public string cardName { get; set; }
 
 
     /// <summary>
@@ -10,9 +10,9 @@
     /// </summary>
     public Card(int number, string suit)
     {
-        this.Number = number;
-        this.Suit = suit;
-        this.CardName = CardNameCreate();
+        this.number = number;
+        this.suit = suit;
+        this.cardName = CardNameCreate();
     }
 
 
@@ -24,7 +24,7 @@
     {
         string cardValue;
 
-        switch (this.Number)
+        switch (this.number)
         {
             case 11:
                 cardValue = "Jack";
@@ -39,10 +39,10 @@
                 cardValue = "Ace";
                 break;
             default:
-                cardValue = this.Number.ToString();
+                cardValue = this.number.ToString();
                 break;
         }
 
-        return cardValue + " of " + this.Suit;
+        return cardValue + " of " + this.suit;
     }
 }
